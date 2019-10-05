@@ -45,7 +45,7 @@
 			</div>
 
 			<?php 
-				$this->load->view('tables/appointments');
+				$this->load->view('tables/jobs');
 			?>
 		</div>
 	</div>

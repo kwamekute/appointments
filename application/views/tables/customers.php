@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<div class="btn-group">
-							<a href="<?php echo(site_url('appointment-staff/add-appointment')); ?>" id="addRow" class="btn btn-info">
+							<a href="<?php echo(site_url($this->uri->segment(1).'/add-customer')); ?>" id="addRow" class="btn btn-info">
 								Add New <i class="fa fa-plus"></i>
 							</a>
 						</div>
@@ -44,51 +44,39 @@
 								<table class="table table-hover table-checkable order-column full-width" id="example4">
 									<thead>
 										<tr>
-													<th></th>
-													<th> Name </th>
-													<th> Vehicle Reg. No. </th>
-													<th> Date Of Appointment </th>
-													<th> Mobile </th>
-													<th>Service Advisor</th>
-													<th>Desc. of Service</th>
-													<th> Action </th>
-												</tr>
+											<th></th>
+											<th> Name </th>
+											<th> Mobile </th>
+											<th> Email </th>
+											<th>Date Created</th>
+											<th> Action </th>
+										</tr>
 									</thead>
 									<tbody>
 										<?php
-											$appts = $this->appt_model->getAppointments($filter);
+											$cust = $this->customer_model->getCustomers();
 
-											foreach ($appts as $row) {
+											foreach ($cust as $row) {
 										?>
 											<tr class="odd gradeX">
-													<td class="patient-img">
+												<td class="patient-img">
 													<img src="<?php echo isset($row['img_url'])?$row['img_url']:base_url('dist/img/user.png'); ?>" alt="">
 												</td>
 												<td><?php echo $this->utils->extractFullName($row); ?></td>
-												<td><?php echo $row['vehicle_reg_no']; ?></td>
+												<td><a href="tel::<?php echo $row['telephone']; ?>">
+												:<?php echo $row['telephone']; ?> </a></td>
+												<td><a href="mailto:<?php echo $row['email']; ?>">
+												<?php echo $row['email']; ?> </a></td>
+												<td class="center"><?php echo explode(' ', $row['create_time'])[0]; ?></td>
 												<td>
-													<a href="tel:<?php echo $row['telephone']; ?>">:
-														<?php echo $row['telephone']; ?>
-													</a>
-												</td>
-												<td>
-													<?php 
-														$sd = $this->utils->getRowByUserId('service_advisor',$row['service_advisor_id']);
-														echo $this->utils->extractFullName($sd); 
-													?>
-												</td>
-												<td>
-													<?php echo $row['description_of_service']; ?>	
-												</td>
-												<td>
-													<a href="<?php echo site_url('appointment-staff/edit-appointment/'.$row['id']); ?>" class="btn btn-primary btn-xs">
+													<a href="edit_staff.html" class="btn btn-primary btn-xs">
 														<i class="fa fa-pencil"></i>
 													</a>
-													<a href="<?php echo site_url('appointment-staff/all-appointments?delete-appointment='.$row['id']); ?>" class="btn btn-danger btn-xs">
+													<a href="javasctipt().html" class="btn btn-danger btn-xs">
 														<i class="fa fa-trash-o "></i>
 													</a>
 												</td>
-												</tr>
+											</tr>
 										<?php } ?>
 									</tbody>
 								</table>

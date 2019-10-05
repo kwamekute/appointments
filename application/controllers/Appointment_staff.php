@@ -50,7 +50,7 @@ class Appointment_staff extends CI_Controller
 	}
 
 	/**
-	 * FUNCTION : ADD_APPOINTMENT
+	 * FUNCTION : BOOK_APPOINTMENT
 	 */
 	public function add_appointment()
 	{
@@ -66,6 +66,8 @@ class Appointment_staff extends CI_Controller
 		$data['icons_css'] = true;
 		$data['material_css'] = true;
 		$data['wizard_css'] = true;
+		$data['bootstrap_forms_css'] = true;
+		$data['select2_css'] = true;
 		$data['title'] = "Appointments | Add Appointment";
 		$data['author'] = "";
 
@@ -79,6 +81,8 @@ class Appointment_staff extends CI_Controller
 		$data['jquery_js'] = true;
 		$data['common_js'] = true;
 		$data['material_js'] = true;
+		$data['bootstrap_forms_js'] = true;
+		$data['select2_js'] = true;
 		$data['wizard_js'] = true;
 
 		$this->load->view('templates/footer',$data);
@@ -86,13 +90,48 @@ class Appointment_staff extends CI_Controller
 
 
 	/**
+	 * FUNCTION : ADD_CUSTOMER
+	 */
+	public function add_customer()
+	{
+		if (filter_input(INPUT_POST, 'submit')==='customer') 
+		{
+			echo $this->customer_model->addCustomer();
+			return;
+		}
+
+		$data['bootstrap_css'] = true;
+		$data['formlayout_css'] = true;
+		$data['theme_css'] = true;
+		$data['icons_css'] = true;
+		$data['material_css'] = true;
+		$data['wizard_css'] = true;
+		$data['title'] = "Appointments | Add Customer";
+		$data['author'] = "";
+
+		$this->load->view('templates/header',$data);
+
+		$data2['section'] = 'customers';
+		$data2['sidemenu'] = 'appt-sidemenu';
+		$this->load->view('pages/add-edit-customer',$data2);
+
+		$data['bootstrap_js'] = true;
+		$data['jquery_js'] = true;
+		$data['common_js'] = true;
+		$data['material_js'] = true;
+		$data['wizard_js'] = true;
+
+		$this->load->view('templates/footer',$data);
+	}
+
+	/**
 	 * FUNCTION : ALL_APPOINTMENTS
 	 */
-	public function all_appointments()
+	public function all_appointments($option='')
 	{
 		if (filter_input(INPUT_POST, 'submit')==='delete-appointment') 
 		{
-			echo $this->appt_model->deleteUser($type);
+			echo $this->appt_model->deleteAppointment();
 			return;
 		}
 
@@ -108,6 +147,18 @@ class Appointment_staff extends CI_Controller
 		$this->load->view('templates/header',$data);
 
 		$data2['section'] = 'appointments';
+		$data2['sidemenu'] = 'appt-sidemenu';
+		$data2['filter'] = [];
+
+		if($option === 'pending')
+			$data2['filter'] = array('appointment_status'=> 'Pending');
+		elseif($option === 'dued' )
+			$data2['filter'] = array('appointment_status'=> 'Dued');
+		elseif($option === 'processed')
+			$data2['filter'] = array('appointment_status'=> 'Processed');
+		
+			
+
 		$this->load->view('pages/all-appointments',$data2);
 
 		$data['bootstrap_js'] = true;
@@ -118,36 +169,16 @@ class Appointment_staff extends CI_Controller
 
 		$this->load->view('templates/footer',$data);
 	}
-	/**
-	 * FUNCTION : ALL_JOB_PLANNERS
-	 */
-	public function all_job_planners()
-	{
-		$this->view_all_requires('job_planner','job-planners','Job Planners');
-	}
-	/**
-	 * FUNCTION : ALL_TECHNICIANS
-	 */
-	public function all_technicians()
-	{
-		$this->view_all_requires('technician','technicians','Technicians');
-	}
-	/**
-	 * FUNCTION : ALL_RECEPPTIONISTS
-	 */
-	public function all_receptionists()
-	{
-		$this->view_all_requires('receptionist','receptionists','Receptionists');
-	}
+
 
 	/**
-	 * FUNCTION : VIEW_ALL_REQUIRES
+	 * FUNCTION :ALL_JOBS
 	 */
-	private function view_all_requires($type,$section,$title)
+	public function all_jobs($option='')
 	{
-		if (filter_input(INPUT_POST, 'submit')==='employee') 
+		if (filter_input(INPUT_POST, 'submit')==='delete-job') 
 		{
-			echo $this->admin_model->deleteUser($type);
+			echo $this->appt_model->deleteJCard();
 			return;
 		}
 
@@ -157,13 +188,61 @@ class Appointment_staff extends CI_Controller
 		$data['icons_css'] = true;
 		$data['material_css'] = true;
 		$data['wizard_css'] = true;
-		$data['title'] = "Admin | All ".$title;
+		$data['title'] = "Appointments | All Jobs";
 		$data['author'] = "";
 
 		$this->load->view('templates/header',$data);
 
-		$data2['section'] = $section;
-		$this->load->view('pages/all-staffs',$data2);
+		$data2['section'] = 'jobs';
+		$data2['sidemenu'] = 'appt-sidemenu';
+		$data2['filter'] = [];
+
+		if($option === 'pending')
+			$data2['filter'] = array('job_status'=> 'Pending');
+		elseif($option === 'on-going' )
+			$data2['filter'] = array('job_status'=> 'Ongoing');
+		elseif($option === 'completed')
+			$data2['filter'] = array('job_status'=> 'Completed');
+		
+			
+
+		$this->load->view('pages/all-jobs',$data2);
+
+		$data['bootstrap_js'] = true;
+		$data['jquery_js'] = true;
+		$data['common_js'] = true;
+		$data['material_js'] = true;
+		$data['wizard_js'] = true;
+
+		$this->load->view('templates/footer',$data);
+	}
+
+
+	/**
+	 * FUNCTION : ALL_CUSTOMERS
+	 */
+	public function all_customers()
+	{
+		if (filter_input(INPUT_POST, 'submit')==='delete-customer') 
+		{
+			echo $this->appt_model->deleteCustomer();
+			return;
+		}
+
+		$data['bootstrap_css'] = true;
+		$data['formlayout_css'] = true;
+		$data['theme_css'] = true;
+		$data['icons_css'] = true;
+		$data['material_css'] = true;
+		$data['wizard_css'] = true;
+		$data['title'] = "Appointments | All Customers";
+		$data['author'] = "";
+
+		$this->load->view('templates/header',$data);
+
+		$data2['section'] = 'customers';
+		$data2['sidemenu'] = 'appt-sidemenu';
+		$this->load->view('pages/all-customers',$data2);
 
 		$data['bootstrap_js'] = true;
 		$data['jquery_js'] = true;

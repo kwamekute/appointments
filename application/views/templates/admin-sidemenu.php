@@ -44,7 +44,7 @@
 						<a href="<?php echo(site_url('admin/all-appointments/pending')); ?>" class="nav-link">
 							<span class="title">Pending</span>
 							<span  style="background:#C9302C;"class="label label-rouded label-menu">
-							<?php //echo $this->appt_model->getPending(); ?>
+							<?php echo $this->appt_model->getNumPending(); ?>
 						</a>
 					</li>
 
@@ -52,7 +52,7 @@
 						<a href="<?php echo(site_url('admin/all-appointments/dued')); ?>" class="nav-link">
 							<span class="title">Dued</span>
 							<span  style="background:#E67D20;"class="label label-rouded label-menu">
-							<?php //echo $this->appt_model->getDued(); ?>
+							<?php echo $this->appt_model->getNumDued(); ?>
 						</a>
 					</li>
 
@@ -60,7 +60,7 @@
 						<a href="<?php echo(site_url('admin/all-appointments/processed')); ?>" class="nav-link">
 							<span class="title">Processed</span>
 							<span  style="background:#28A745;"class="label label-rouded label-menu">
-							<?php //echo $this->appt_model->getProcessed(); ?>
+							<?php echo $this->appt_model->getNumProcessed(); ?>
 						</a>
 					</li>
 				</ul>
@@ -79,7 +79,7 @@
 						<a href="<?php echo(site_url('admin/all-jobs/pending')); ?>" class="nav-link">
 							<span class="title">Pending</span>
 							<span  style="background:#C9302C;"class="label label-rouded label-menu">
-							<?php //echo $this->jcard_model->getPending(); ?>
+							<?php echo $this->jcard_model->getNumPending(); ?>
 						</a>
 					</li>
 
@@ -87,7 +87,7 @@
 						<a href="<?php echo(site_url('admin/all-jobs/on-going')); ?>" class="nav-link">
 							<span class="title">On going</span>
 							<span  style="background:#E67D20;"class="label label-rouded label-menu">
-							<?php //echo $this->jcard_model->getOngoing(); ?>
+							<?php echo $this->jcard_model->getNumOngoing(); ?>
 						</a>
 					</li>
 
@@ -95,7 +95,7 @@
 						<a href="<?php echo(site_url('admin/all-jobs/completed')); ?>" class="nav-link">
 							<span class="title">Completed</span>
 							<span  style="background:#28A745;"class="label label-rouded label-menu">
-							<?php //echo $this->jcard_model->getCompleted(); ?>
+							<?php echo $this->jcard_model->getNumCompleted(); ?>
 						</a>
 					</li>
 				</ul>

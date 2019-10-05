@@ -6,7 +6,7 @@
 
 		<?php 
 			$data['selected1'] = $section;
-			$data['selected2'] = $this->uri->segment(3);
+			$data['selected2'] = $this->uri->segment(2);
 			$this->load->view('templates/'.$sidemenu,$data); 
 		?>
 		<!-- start page content -->
@@ -15,9 +15,7 @@
 				<div class="page-bar">
 					<div class="page-title-breadcrumb">
 						<div class=" pull-left">
-							<div class="page-title">All 
-								<?php echo ucwords(str_replace('-', ' ', $section).' '.$data['selected2']); ?>	
-							</div>
+							<div class="page-title">All <?php echo ucwords(str_replace('-', ' ', $section)); ?></div>
 						</div>
 						<ol class="breadcrumb page-breadcrumb pull-right">
 							<li>
@@ -37,7 +35,7 @@
 								<i class="fa fa-table"></i>&nbsp;
 								<a class="parent-item" href="<?php echo(site_url(site_url())); ?>" > 
 
-									All <?php echo ucwords(str_replace('-', ' ', $section).' '.$data['selected2']);?>
+									All <?php echo ucwords(str_replace('-', ' ', $section));?>
 								</a>&nbsp;
 							</li>
 					</ol>
@@ -45,7 +43,7 @@
 			</div>
 
 			<?php 
-				$this->load->view('tables/appointments');
+				$this->load->view('tables/customers');
 			?>
 		</div>
 	</div>

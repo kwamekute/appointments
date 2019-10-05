@@ -142,4 +142,5 @@ $autoload['model'] = array(
 				'aptstaff_model',
 				'recept_model',
 				'planner_model',
-				'appt_model');
+				'appt_model',
+				'customer_model');

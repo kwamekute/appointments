@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<div class="btn-group">
-							<a href="<?php echo(site_url('appointment-staff/add-appointment')); ?>" id="addRow" class="btn btn-info">
+							<a href="<?php echo(site_url($this->uri->segment(1).'/add-appointment')); ?>" id="addRow" class="btn btn-info">
 								Add New <i class="fa fa-plus"></i>
 							</a>
 						</div>
@@ -44,41 +44,42 @@
 								<table class="table table-hover table-checkable order-column full-width" id="example4">
 									<thead>
 										<tr>
-													<th></th>
-													<th> Name </th>
-													<th> Vehicle Reg. No. </th>
-													<th> Date Of Appointment </th>
-													<th> Mobile </th>
-													<th>Service Advisor</th>
-													<th>Desc. of Service</th>
-													<th> Action </th>
-												</tr>
+											<th></th>
+											<th> Vehicle Reg. No. </th>
+											<th> Assigned Technician </th>
+											<th> Begin Time </th>
+											<th> Finish Time </th>
+											<th> Stall Loc. </th>
+											<th>Desc. of Service</th>
+											<th>Job Status</th>
+											<th> Action </th>
+										</tr>
 									</thead>
 									<tbody>
 										<?php
-											$appts = $this->appt_model->getAppointments($filter);
+											$appts = $this->appt_model->getJobs($filter);
 
 											foreach ($appts as $row) {
+												$tech = $this->utils->getRowByUserId('technician',$row['technician_id']);
+												$stall = $this->utils->getRowByUserId('stall',$row['stall_id']);
 										?>
 											<tr class="odd gradeX">
-													<td class="patient-img">
-													<img src="<?php echo isset($row['img_url'])?$row['img_url']:base_url('dist/img/user.png'); ?>" alt="">
-												</td>
-												<td><?php echo $this->utils->extractFullName($row); ?></td>
+												<td></td>
 												<td><?php echo $row['vehicle_reg_no']; ?></td>
+												<td><?php echo $this->utils->extractFullName($tech); ?></td>
+												<td><?php echo $row['begin_time']; ?></td>
+												<td><?php echo $row['finish_time']; ?></td>
 												<td>
-													<a href="tel:<?php echo $row['telephone']; ?>">:
-														<?php echo $row['telephone']; ?>
+													<a href="<?php echo site_url($this->uri->segment(1).'/stall-detail'.$row['stall_id']); ?>">:
+														<?php echo $stall['location']; ?>
 													</a>
 												</td>
-												<td>
-													<?php 
-														$sd = $this->utils->getRowByUserId('service_advisor',$row['service_advisor_id']);
-														echo $this->utils->extractFullName($sd); 
-													?>
-												</td>
+												<td> </td>
 												<td>
 													<?php echo $row['description_of_service']; ?>	
+												</td>
+												<td>
+													<?php echo $row['job_status']; ?>	
 												</td>
 												<td>
 													<a href="<?php echo site_url('appointment-staff/edit-appointment/'.$row['id']); ?>" class="btn btn-primary btn-xs">
