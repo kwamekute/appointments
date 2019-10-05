@@ -18,7 +18,7 @@ class User_model extends CI_Model
 
         $result = $this->db->select('*')
                         ->from($this->session->user_sess['type'])
-                        ->where('id',$this->session->user_sess['id'])
+                        ->where('user_id',$this->session->user_sess['id'])
                         ->get()
                         ->row_array();
 
