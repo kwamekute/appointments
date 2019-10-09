@@ -14,7 +14,10 @@ class Vehicle_model extends CI_Model
 
     public function addVehicle()
     {
-
+        $data = filter_input_array(INPUT_POST);
+        unset($data['submit']);
+            
+        return $this->db->insert('vehicle',$data);
     }
 
     public function getVehicles(array $where=[])
