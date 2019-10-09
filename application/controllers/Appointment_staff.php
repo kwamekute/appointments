@@ -12,8 +12,8 @@ class Appointment_staff extends CI_Controller
 	{
 		parent::__construct();
 
-		if (! $this->auth_model->isValidController()) 
-			redirect('login/appointment');
+	//	if (! $this->auth_model->isValidController()) 
+			//redirect('login/appointment-staff');
 	}
 
 	/**
