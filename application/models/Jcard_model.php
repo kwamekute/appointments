@@ -12,6 +12,14 @@ class Jcard_model extends CI_Model
         parent::__construct();
     }
 
+    public function addJobCard()
+    {
+        $data = filter_input_array(INPUT_POST);
+        unset($data['submit']);
+
+        return $this->db->insert('job_card',$data);
+    }
+
     public function getLastest()
     {
         return 

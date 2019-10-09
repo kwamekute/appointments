@@ -13,7 +13,7 @@ class Appointment_staff extends CI_Controller
 		parent::__construct();
 
 		if (! $this->auth_model->isValidController()) 
-			redirect('login/appointment');
+			redirect('login/appointment-staff');
 	}
 
 	/**
@@ -50,7 +50,7 @@ class Appointment_staff extends CI_Controller
 	}
 
 	/**
-	 * FUNCTION : BOOK_APPOINTMENT
+	 * FUNCTION : ADD_APPOINTMENT
 	 */
 	public function add_appointment()
 	{
@@ -84,6 +84,47 @@ class Appointment_staff extends CI_Controller
 		$data['bootstrap_forms_js'] = true;
 		$data['select2_js'] = true;
 		$data['wizard_js'] = true;
+		$data['javascript'] = $this->load->view('scripts/appointment-staff',[],true);
+
+		$this->load->view('templates/footer',$data);
+	}
+
+	/**
+	 * FUNCTION : ADD_VEHICLE
+	 */
+	public function add_vehicle()
+	{
+		if (filter_input(INPUT_POST, 'submit')==='vehicle') 
+		{
+			echo $this->vehicle_model->addVehicle();
+			return;
+		}
+
+		$data['bootstrap_css'] = true;
+		$data['formlayout_css'] = true;
+		$data['theme_css'] = true;
+		$data['icons_css'] = true;
+		$data['material_css'] = true;
+		$data['wizard_css'] = true;
+		$data['bootstrap_forms_css'] = true;
+		$data['select2_css'] = true;
+		$data['title'] = "Appointments | Add Vehicle";
+		$data['author'] = "";
+
+		$this->load->view('templates/header',$data);
+
+		$data2['section'] = 'vehicles';
+
+		$this->load->view('pages/add-edit-vehicle',$data2);
+
+		$data['bootstrap_js'] = true;
+		$data['jquery_js'] = true;
+		$data['common_js'] = true;
+		$data['material_js'] = true;
+		$data['bootstrap_forms_js'] = true;
+		$data['select2_js'] = true;
+		$data['wizard_js'] = true;
+		$data['javascript'] = $this->load->view('scripts/appointment-staff',[],true);
 
 		$this->load->view('templates/footer',$data);
 	}
@@ -120,6 +161,7 @@ class Appointment_staff extends CI_Controller
 		$data['common_js'] = true;
 		$data['material_js'] = true;
 		$data['wizard_js'] = true;
+		$data['javascript'] = $this->load->view('scripts/appointment-staff',[],true);
 
 		$this->load->view('templates/footer',$data);
 	}
@@ -170,6 +212,43 @@ class Appointment_staff extends CI_Controller
 		$this->load->view('templates/footer',$data);
 	}
 
+/**
+	 * FUNCTION : ALL_VEHICLE
+	 */
+	public function all_vehicles($option='')
+	{
+		if (filter_input(INPUT_POST, 'submit')==='delete-vehicle') 
+		{
+			echo $this->vehicle_model->deleteVehicle();
+			return;
+		}
+
+		$data['bootstrap_css'] = true;
+		$data['formlayout_css'] = true;
+		$data['theme_css'] = true;
+		$data['icons_css'] = true;
+		$data['material_css'] = true;
+		$data['wizard_css'] = true;
+		$data['title'] = "Appointments | All Vehicles";
+		$data['author'] = "";
+
+		$this->load->view('templates/header',$data);
+
+		$data2['section'] = 'vehicles';
+		$data2['sidemenu'] = 'appt-sidemenu';
+		$data2['filter'] = [];
+
+		$this->load->view('pages/all-vehicles',$data2);
+
+		$data['bootstrap_js'] = true;
+		$data['jquery_js'] = true;
+		$data['common_js'] = true;
+		$data['material_js'] = true;
+		$data['wizard_js'] = true;
+
+		$this->load->view('templates/footer',$data);
+	}
+
 
 	/**
 	 * FUNCTION :ALL_JOBS
@@ -178,7 +257,7 @@ class Appointment_staff extends CI_Controller
 	{
 		if (filter_input(INPUT_POST, 'submit')==='delete-job') 
 		{
-			echo $this->appt_model->deleteJCard();
+			echo $this->jcard_model->deleteJCard();
 			return;
 		}
 
@@ -225,7 +304,7 @@ class Appointment_staff extends CI_Controller
 	{
 		if (filter_input(INPUT_POST, 'submit')==='delete-customer') 
 		{
-			echo $this->appt_model->deleteCustomer();
+			echo $this->customer_model->deleteCustomer();
 			return;
 		}
 
