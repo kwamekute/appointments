@@ -14,28 +14,52 @@
 							</header>
 						</div>
 						<div class="card-body" id="bar-parent">
-							<form action="<?php echo site_url(uri_string((isset($id)?$id:''))) ?>" id="form_sample_1" class="form-horizontal" method="post">
+							<form action="<?php echo site_url(uri_string((isset($id)?$id:''))) ?>" class="form-horizontal appointment-form" method="post">
 								<div class="form-body">
 									<div class="form-group row">
-                                            <label class="col-md-3 control-label">Customer
-                                            </label>
-                                            <div class="col-md-5">
-                                                <select name="customer_id" class="form-control" id="selitemIcon">
-                                                    <option value="">Select a customer</option>
+										<label class="col-md-3 control-label">Customer
+										</label>
+										<div class="col-md-5">
+											<select name="customer_id" class="form-control select2-customers">
+												<option value="">Select a customer</option>
 
-                                                    <?php 
-                                                    	$custs = $this->customer_model->getCustomers();
+												<?php 
+												$custs = $this->customer_model->getCustomers();
+												$selected_customer = filter_input(INPUT_GET, 'customer');
 
-                                                    	foreach ($custs as $row) {
-                                                    ?>
-                                                    	<option value="<?php echo($row['id']); ?>">
-                                                    		<?php echo $this->utils->extractFullName($row).' - '.$row['telephone']; ?>
-                                                    	</option>
-                                                	<?php } ?>
-                                                </select>
-                                            </div>
-                                        </div>
-									
+												foreach ($custs as $row) {
+													?>
+													<option value="<?php echo($row['id']); ?>" <?php echo($row['id']===$selected_customer?'selected':''); ?>>
+														<?php echo $this->utils->extractFullName($row).' - '.$row['telephone']; ?>
+													</option>
+												<?php } ?>
+											</select>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="col-md-3 control-label">Vehicle(s)
+										</label>
+										<div class="col-md-5">
+
+											<select id="multiple" name="vehicle_id" class="form-control select2-customer-vehicles" multiple>
+												<option value="">Select a vehicle</option>
+
+												<?php 
+												$selected_customer = filter_input(INPUT_GET, 'customer');
+												$vehicles = $this->vehicle_model->getVehicles(['customer_id'=>$selected_customer]);
+
+												foreach ($vehicles as $row) {
+													?>
+													<option value="<?php echo($row['id']); ?>">
+														<?php echo $row['reg_no']; ?>
+													</option>
+												<?php } ?>
+											</select>
+										</div>
+
+									</div>
+
 									<div class="form-group row">
 										<label class="control-label col-md-3">Date Of Appointment
 											<span class="required"> * </span>
@@ -60,13 +84,13 @@
 											</div>
 										</div>
 									</div>
-									
+
 									<div class="form-group row">
 										<label class="control-label col-md-3">Description Of Service
 										</label>
 										<div class="col-md-5">
 											<textarea name="description_of_service" rows="5"  placeholder="Description of service" 
-										 class="form-control input-height"><?php echo isset($description_of_service)?$description_of_service:''; ?></textarea>
+											class="form-control"><?php echo isset($description_of_service)?$description_of_service:''; ?></textarea>
 										</div>
 									</div>
 								</div>
@@ -95,7 +119,7 @@
 							</header>
 						</div>
 						<div class="card-body" id="bar-parent">
-							<form action="<?php echo site_url(uri_string((isset($id)?$id:''))) ?>" id="form_sample_1" class="form-horizontal" method="post">
+							<form action="<?php echo site_url(uri_string((isset($id)?$id:''))) ?>" class="form-horizontal appointment-form" method="post">
 								<div class="form-body">
 									<div class="form-group row">
 										<label class="control-label col-md-3">First Name
@@ -121,24 +145,24 @@
 									</div>
 
 									<div class="form-group row">
-												<label class="control-label col-md-3">Gender
-													<span class="required"> * </span>
-												</label>
-												<div class="col-md-5">
-													<select class="form-control input-height" data-required="1" name="sex">
-														<option value="">Select...</option>
-														<option value="Male">Male</option>
-														<option value="Female">Female</option>
-													</select>
-												</div>
-											</div>
-											
+										<label class="control-label col-md-3">Gender
+											<span class="required"> * </span>
+										</label>
+										<div class="col-md-5">
+											<select class="form-control input-height" data-required="1" name="sex">
+												<option value="">Select...</option>
+												<option value="Male">Male</option>
+												<option value="Female">Female</option>
+											</select>
+										</div>
+									</div>
+
 									<div class="form-group row">
 										<label class="control-label col-md-3">Date Of Appointment
 											<span class="required"> * </span>
 										</label>
 										<div class="input-append date" id="dp1">
-											<input class="formDatePicker" placeholder="Date Of Appointment" value="<?php echo date('Y-m-d'); ?>" size="44" type="text"
+											<input name="due_date" class="formDatePicker" placeholder="Date Of Appointment" value="<?php echo date('Y-m-d'); ?>" size="44" type="text"
 											readonly>
 											<span class="add-on"><i class="fa fa-calendar"></i></span>
 										</div>
@@ -172,18 +196,60 @@
 										<div class="col-md-5">
 											<div class="input-group">
 												<span class="input-group-addon">
-													<i class="fa fa-envelope"></i>
+													<i class="fa fa-envelope" style="margin-top: 45%;"></i>
 												</span>
 												<input type="text" class="form-control input-height" name="email" value="<?php echo isset($email)?$email:''; ?>" placeholder="Email Address">
 											</div>
 										</div>
 									</div>
+
+									<div class="form-group row">
+										<label class="control-label col-md-3">Registration No.
+										</label>
+										<div class="col-md-5">
+											<div class="input-group">
+												<input type="text" class="form-control input-height" name="reg_no" value="<?php echo isset($reg_no)?$reg_no:''; ?>" placeholder="Registration number">
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="control-label col-md-3">Chasis No.
+										</label>
+										<div class="col-md-5">
+											<div class="input-group">
+												<input type="text" class="form-control input-height" name="chasis_no" value="<?php echo isset($chasis_no)?$chasis_no:''; ?>" placeholder="Chasis number">
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="control-label col-md-3">Make & Model
+										</label>
+										<div class="col-md-5">
+											<div class="input-group">
+												<input type="text" class="form-control input-height" name="make_and_model" value="<?php echo isset($make_and_model)?$make_and_model:''; ?>" placeholder="Make and model">
+											</div>
+										</div>
+									</div>
+
+									<div class="form-group row">
+										<label class="control-label col-md-3">Mileage
+										</label>
+										<div class="col-md-5">
+											<div class="input-group">
+												<input type="text" class="form-control input-height" name="milleage" value="<?php echo isset($milleage)?$milleage:''; ?>" placeholder="Mileage">
+											</div>
+										</div>
+									</div>
+
+
 									<div class="form-group row">
 										<label class="control-label col-md-3">Description Of Service
 										</label>
 										<div class="col-md-5">
 											<textarea name="description_of_service" rows="5"  placeholder="Description of service" 
-										 class="form-control input-height"><?php echo isset($description_of_service)?$description_of_service:''; ?></textarea>
+											class="form-control"><?php echo isset($description_of_service)?$description_of_service:''; ?></textarea>
 										</div>
 									</div>
 

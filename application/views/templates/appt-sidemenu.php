@@ -133,6 +133,31 @@
 				</a>
 			</li>
 
+			<li class="nav-item <?php echo $selected1==='vehicles'?'active open':''; ?>">
+				<a href="#" class="nav-link nav-toggle">
+					<i class="material-icons">dvr</i>
+					<span class="title">Vehicles</span>
+					<span class="label label-rouded label-menu">
+						<?php echo $this->db->count_all('vehicle'); ?>
+					</span>
+					<span class="<?php echo $selected1==='vehicles'?'arrow open':'arrow'; ?>"></span>
+
+				<ul class="sub-menu">
+					<li class="nav-item <?php echo $selected2==='all-vehicles'?'active open':''; ?>">
+						<a href="<?php echo(site_url('appointment-staff/all-vehicles')); ?>" class="nav-link">
+							<span class="title">All Vehicles</span>
+						</a>
+					</li>
+
+					<li class="nav-item <?php echo $selected2==='add-vehicle'?'active open':''; ?>">
+						<a href="<?php echo(site_url('appointment-staff/add-vehicle')); ?>" class="nav-link">
+							<span class="title">Add Vehicle</span>
+						</a>
+					</li>
+				</ul>
+				</a>
+			</li>
+
 			<li class="nav-item hide <?php echo $selected1==='reports'?'active open':''; ?>">
 				<a href="#" class="nav-link nav-toggle">
 					<i class="material-icons">archive</i>

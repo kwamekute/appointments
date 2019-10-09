@@ -33,5 +33,25 @@ class Utils extends CI_Model
     				->get()
     				->row_array();
     }
+
+    public function getLastInserted($table)
+    {
+        return
+            $this->db->select('*')
+                    ->from($table)
+                    ->order_by('id','DESC')
+                    ->limit(1)
+                    ->get()->row_array();
+    }
+
+    public function getRowWhere($table,$where=[])
+    {
+        return 
+            $this->db->select('*')
+                    ->from($table)
+                    ->where($where)
+                    ->get()
+                    ->row_array();
+    }
 }
 

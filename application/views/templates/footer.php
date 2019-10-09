@@ -133,5 +133,6 @@ function chart_js()
 <?php }  ?>
 
 <!-- end js include path -->
+<?php echo isset($javascript)?$javascript:''; ?>
 </body>
 </html>

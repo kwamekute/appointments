@@ -51,13 +51,12 @@
 											<th> Finish Time </th>
 											<th> Stall Loc. </th>
 											<th>Desc. of Service</th>
-											<th>Job Status</th>
 											<th> Action </th>
 										</tr>
 									</thead>
 									<tbody>
 										<?php
-											$appts = $this->appt_model->getJobs($filter);
+											$appts = $this->jcard_model->getJobs($filter);
 
 											foreach ($appts as $row) {
 												$tech = $this->utils->getRowByUserId('technician',$row['technician_id']);
@@ -77,9 +76,6 @@
 												<td> </td>
 												<td>
 													<?php echo $row['description_of_service']; ?>	
-												</td>
-												<td>
-													<?php echo $row['job_status']; ?>	
 												</td>
 												<td>
 													<a href="<?php echo site_url('appointment-staff/edit-appointment/'.$row['id']); ?>" class="btn btn-primary btn-xs">
