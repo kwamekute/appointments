@@ -20,20 +20,44 @@
                                             <label class="col-md-3 control-label">Customer
                                             </label>
                                             <div class="col-md-5">
-                                                <select name="customer_id" class="form-control" id="selitemIcon">
+                                                <select name="customer_id" class="form-control" id="select2-customers">
                                                     <option value="">Select a customer</option>
 
                                                     <?php 
                                                     	$custs = $this->customer_model->getCustomers();
+                                                    	$selected_customer = filter_input(INPUT_GET, 'customer');
 
                                                     	foreach ($custs as $row) {
                                                     ?>
-                                                    	<option value="<?php echo($row['id']); ?>">
+                                                    	<option value="<?php echo($row['id']); ?>" <?php echo($row['id']===$selected_customer?'selected':''); ?>>
                                                     		<?php echo $this->utils->extractFullName($row).' - '.$row['telephone']; ?>
                                                     	</option>
                                                 	<?php } ?>
                                                 </select>
                                             </div>
+                                        </div>
+
+                                        <div class="form-group row">
+                                            <label class="col-md-3 control-label">Vehicle(s)
+                                            </label>
+                                            <div class="col-md-5">
+                                            	
+                                               <select id="multiple" class="form-control select2-customer-vehicles" multiple>
+                                                    <option value="">Select a vehicle</option>
+
+                                                    <?php 
+                                                    	$selected_customer = filter_input(INPUT_GET, 'customer');
+                                                    	$vehicles = $this->vehicle_model->getVehicles(['customer_id'=>$selected_customer]);
+
+                                                    	foreach ($vehicles as $row) {
+                                                    ?>
+                                                    	<option value="<?php echo($row['id']); ?>">
+                                                    		<?php echo $row['reg_no']; ?>
+                                                    	</option>
+                                                	<?php } ?>
+                                                </select>
+                                            </div>
+
                                         </div>
 									
 									<div class="form-group row">
@@ -172,7 +196,7 @@
 										<div class="col-md-5">
 											<div class="input-group">
 												<span class="input-group-addon">
-													<i class="fa fa-envelope"></i>
+													<i class="fa fa-envelope" style="margin-top: 45%;"></i>
 												</span>
 												<input type="text" class="form-control input-height" name="email" value="<?php echo isset($email)?$email:''; ?>" placeholder="Email Address">
 											</div>
