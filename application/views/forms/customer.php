@@ -5,14 +5,14 @@
 									<header>Customer Information</header>
 								</div>
 								<div class="card-body" id="bar-parent">
-									<form action="#" id="form_sample_1" class="form-horizontal">
+									<form action="<?php echo site_url(uri_string()); ?>" id="customer-form" class="form-horizontal">
 										<div class="form-body">
 											<div class="form-group row">
 												<label class="control-label col-md-3">First Name
 													<span class="required"> * </span>
 												</label>
 												<div class="col-md-5">
-													<input type="text" name="firstname" data-required="1" placeholder="enter first name" class="form-control input-height" />
+													<input type="text" name="first_name" data-required="1" placeholder="enter first name" class="form-control input-height" />
 												</div>
 											</div>
 
@@ -20,7 +20,7 @@
 												<label class="control-label col-md-3">Middle Name
 												</label>
 												<div class="col-md-5">
-													<input type="text" name="firstname" data-required="0" placeholder="enter middle name" class="form-control input-height" />
+													<input type="text" name="middle_name" data-required="0" placeholder="enter middle name" class="form-control input-height" />
 												</div>
 											</div>
 											<div class="form-group row">
@@ -28,7 +28,7 @@
 													<span class="required"> * </span>
 												</label>
 												<div class="col-md-5">
-													<input type="text" name="lastname" data-required="1" placeholder="enter last name" class="form-control input-height" />
+													<input type="text" name="last_name" data-required="1" placeholder="enter last name" class="form-control input-height" />
 												</div>
 											</div>
 											

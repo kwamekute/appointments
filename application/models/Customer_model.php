@@ -14,7 +14,14 @@ class Customer_model extends CI_Model
 
     public function addCustomer()
     {
-
+        return 
+            $this->db->set('first_name',$this->input->post('first_name'))
+                    ->set('middle_name',$this->input->post('middle_name'))
+                    ->set('last_name',$this->input->post('last_name'))
+                    ->set('telephone',$this->input->post('telephone'))
+                    ->set('sex',$this->input->post('sex'))
+                    ->set('email',$this->input->post('email'))
+                    ->insert('customer');
     }
 
     public function getCustomers()
@@ -25,4 +32,6 @@ class Customer_model extends CI_Model
     				->get()
     				->result_array();
     }
+
+
 }
