@@ -87,8 +87,8 @@
 						<div class="info-box bg-success">
 							<span class="info-box-icon push-bottom"><i class="material-icons">monetization_on</i></span>
 							<div class="info-box-content">
-								<span class="info-box-text">Stallers</span>
-								<span class="info-box-number"><?php echo $this->db->count_all('stall'); ?></span>
+								<span class="info-box-text">Vehicle</span>
+								<span class="info-box-number"><?php echo $this->db->count_all('vehicle'); ?></span>
 								<div class="hide progress">
 									<div class="progress-bar" style="width: 50%"></div>
 								</div>

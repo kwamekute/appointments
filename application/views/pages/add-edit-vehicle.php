@@ -49,7 +49,7 @@
 			</div>
 
 			<?php 
-				$this->load->view('forms/appointment');
+				$this->load->view('forms/vehicle');
 			?>
 		</div>
 	</div>

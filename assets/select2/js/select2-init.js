@@ -9,7 +9,7 @@ $('.select2-customer-vehicles').select2({
     placeholder: placeholder,
 });
 
-$("#select2-customers").select2({
+$(".select2-customers").select2({
 	theme: "bootstrap",
 	templateResult: format,
     formatSelection: format,

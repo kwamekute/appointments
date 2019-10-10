@@ -66,8 +66,7 @@
 												</td>
 												<td><?php echo $this->utils->extractFullName($row); ?></td>
 												<td class="center"><?php echo $row['employee_id']; ?></td>
-												<td><a href="tel::<?php echo $row['telephone']; ?>">
-												:<?php echo $row['telephone']; ?> </a></td>
+												<td><a href="tel::<?php echo $row['telephone']; ?>"> </a></td>
 												<td><a href="mailto:<?php echo $row['email']; ?>">
 												<?php echo $row['email']; ?> </a></td>
 												<td class="center"><?php echo isset($row['job'])?$row['job']:'Staff'; ?></td>
