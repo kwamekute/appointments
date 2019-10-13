@@ -34,7 +34,10 @@ a {
   -o-transition: all 0.4s;
   -moz-transition: all 0.4s;
 }
-
+.icon
+{
+  width: 20px;
+}
 a:focus {
 	outline: none !important;
 }

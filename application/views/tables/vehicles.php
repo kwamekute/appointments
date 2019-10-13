@@ -50,7 +50,7 @@
 											<th> Chasis No. </th>
 											<th> Milleage </th>
 											<th>Selling Dealer</th>
-											<th>Date Created</th>
+											
 											<th> Action </th>
 										</tr>
 									</thead>
@@ -67,7 +67,7 @@
 												<td><?php echo $row['chasis_no']; ?></td>
 												<td><?php echo $row['milleage']; ?></td>
 												<td><?php echo $row['selling_dealer']; ?></td>
-												<td class="center"><?php echo explode(' ', $row['create_time'])[0]; ?></td>
+											
 												<td>
 													<a href="edit_staff.html" class="btn btn-primary btn-xs">
 														<i class="fa fa-pencil"></i>

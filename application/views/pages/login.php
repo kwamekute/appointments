@@ -21,7 +21,7 @@ elseif($target === 'reception')
 {
 	$img_url = base_url('dist/img/reception.png');
 	$caption = "Reception";
-	$redirect_to = site_url('receptionist');
+	$redirect_to = site_url('recept');
 }
 elseif($target === 'planner')
 {

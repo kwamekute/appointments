@@ -69,6 +69,7 @@
 								</div>
 							</div>
 						</div>
+						
 					</div>
 					<div class="form-actions">
 						<div class="row">
