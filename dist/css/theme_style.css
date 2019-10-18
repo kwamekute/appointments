@@ -6684,7 +6684,7 @@ th>.rt-radio.rt-radio-single {
 }
 .customtab.nav-tabs .nav-link.active, .customtab.nav-tabs .nav-link:hover, .customtab.nav-tabs .nav-link.active:focus {
     border-bottom: 0px solid #36c6d3;
-    background-color: rgb(102, 115, 252) !important;
+    background-color: #C9302C!important;
     box-shadow: 0 5px 20px 0 rgba(0, 0, 0, .2), 0 13px 24px -11px rgb(102, 115, 252);
     color: #fff;
     border-radius: 30px;

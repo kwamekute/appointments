@@ -84,7 +84,7 @@
 					</div>
 					<!-- /.col -->
 					<div class="col-xl-2 col-md-6 col-12">
-						<div class="info-box bg-success">
+						<div class="info-box bg-warning">
 							<span class="info-box-icon push-bottom"><i class="material-icons">build</i></span>
 							<div class="info-box-content">
 								<span class="info-box-text">Being Serviced</span>
@@ -102,7 +102,7 @@
 					</div>
 						<!-- /.col -->
 						<div class="col-xl-2 col-md-6 col-12">
-						<div class="info-box bg-success">
+						<div class="info-box bg-warning">
 							<span class="info-box-icon push-bottom"><i class="material-icons">local_car_wash</i></span>
 							<div class="info-box-content">
 								<span class="info-box-text">Being Washed</span>
@@ -120,7 +120,7 @@
 					</div>
 					<!-- /.col -->
 					<div class="col-xl-2 col-md-6 col-12">
-						<div class="info-box bg-success">
+						<div class="info-box bg-orange">
 							<span class="info-box-icon push-bottom"><i class="material-icons">monetization_on</i></span>
 							<div class="info-box-content">
 								<span class="info-box-text">Waiting for Invoice</span>
@@ -138,7 +138,7 @@
 					</div>
 					<!-- /.col -->
 					<div class="col-xl-2 col-md-6 col-12">
-						<div class="info-box bg-success">
+						<div class="info-box bg-orange">
 							<span class="info-box-icon push-bottom"><i class="material-icons">shopping_cart</i></span>
 							<div class="info-box-content">
 								<span class="info-box-text">Waiting for Del.</span>

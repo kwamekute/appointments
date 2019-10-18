@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<div class="btn-group">
-							<a href="<?php echo(site_url('appointment-staff/add-appointment')); ?>" id="addRow" class="btn btn-info">
+							<a href="<?php echo(site_url('recept/add-appointment')); ?>" id="addRow" class="btn btn-info">
 								Add New <i class="fa fa-plus"></i>
 							</a>
 						</div>
@@ -44,11 +44,10 @@
 								<table class="table table-hover table-checkable order-column full-width" id="example4">
 									<thead>
 										<tr>
-													<th></th>
-													<th> Vehicle Reg. No. </th>
+													<th>Customer</th>
 													<th> Date Of Appointment </th>
-													<th>Service Advisor</th>
-													<th>Desc. of Service</th>
+													<th> Time Of Appointment</th>						
+													<th>Type of Service</th>
 													<th> Action </th>
 												</tr>
 									</thead>

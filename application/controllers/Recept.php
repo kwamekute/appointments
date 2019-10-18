@@ -182,25 +182,25 @@ class Recept extends CI_Controller
 		$data['icons_css'] = true;
 		$data['material_css'] = true;
 		$data['wizard_css'] = true;
-		$data['title'] = "Appointments | All Appointments";
+		$data['title'] = "Reception | All Appointments";
 		$data['author'] = "";
 
 		$this->load->view('templates/header',$data);
 
-		$data2['section'] = 'appointments';
+		$data2['section'] = 'Appointments';
 		$data2['sidemenu'] = 'recept-sidemenu';
 		$data2['filter'] = [];
 
 		if($option === 'pending')
-			$data2['filter'] = array('appointment_status'=> 'Pending');
+			$data2['filter'] = array('appointment_status'=> 'pending');
 		elseif($option === 'dued' )
-			$data2['filter'] = array('appointment_status'=> 'Dued');
+			$data2['filter'] = array('appointment_status'=> 'dued');
 		elseif($option === 'processed')
 			$data2['filter'] = array('appointment_status'=> 'Processed');
 		
 			
 
-		$this->load->view('pages/all-appointments',$data2);
+		$this->load->view('pages/exist-appointments',$data2);
 
 		$data['bootstrap_js'] = true;
 		$data['jquery_js'] = true;
