@@ -21,6 +21,53 @@ class Recept_model extends CI_Model
     				->result_array();
 
     }
+    public function getAppts()
+    {
+    	return
+            $this->db->select('appts.id AS apt_id, customer.id AS cust_id, customer.first_name AS cust_first_name, customer.middle_name AS cust_mid_name,customer.last_name AS cust_last_name, 
+            customer.sex AS cust_gender, customer.telephone As cust_tele,
+            appointment_staff.id AS appt_id, appointment_staff.first_name AS appt_first_name, appointment_staff.last_name AS appt_last_name,
+            appts.due_date AS due_date, appts.date_booked AS booked_on, appts.appt_time AS time_of_appt, appts.description_of_service AS d_of_s,
+            vehicle.id AS veh_id, vehicle.reg_no AS regist_no, vehicle.make_and_model AS model')
+                    ->from('appts')
+                    ->join('customer', 'customer.id = appts.customer_id')
+                    ->join('vehicle', 'vehicle.id = appts.vehicle_id')
+                    ->join('appointment_staff', 'appointment_staff.id = appts.appointment_staff_id')
+                    
+    				->get()
+    				->result_array();
+
+    }
+    public function getSingleAppt($id)
+    {
+        return
+    	
+            $this->db->select('appts.id AS apt_id, customer.id AS cust_id, customer.first_name AS cust_first_name, customer.middle_name AS cust_mid_name,customer.last_name AS cust_last_name, 
+            customer.sex AS cust_gender, customer.telephone As cust_tele,
+            appointment_staff.id AS appt_id, appointment_staff.first_name AS appt_first_name, appointment_staff.last_name AS appt_last_name,
+            appts.due_date AS due_date, appts.date_booked AS booked_on, appts.appt_time AS time_of_appt, appts.description_of_service AS d_of_s,
+            vehicle.id AS veh_id, vehicle.reg_no AS regist_no, vehicle.make_and_model AS model')
+                    ->from('appts')
+                    ->join('customer', 'customer.id = appts.customer_id')
+                    ->join('vehicle', 'vehicle.id = appts.vehicle_id')
+                    ->join('appointment_staff', 'appointment_staff.id = appts.appointment_staff_id')
+                    ->where('appts.id',$id)
+    				->get()
+    				->result_array();
+
+    }
+    public function checkIn($id)
+    {
+        
+        
+            return 
+                $this->db->set('appts_id',$id)
+                        ->set('queue_no',$this->input->post('queue'))
+                        ->insert('checked_in');
+        
+    
+    }
+    
 
     public function addAppointment()
     {

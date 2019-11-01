@@ -28,15 +28,19 @@ class Recept extends CI_Controller
 
 	public function dashboard()
 	{
+		$posts = $this->recept_model->getAppts();
+		
+
 		$data['bootstrap_css'] = true;
 		$data['theme_css'] = true;
 		$data['icons_css'] = true;
 		$data['material_css'] = true;
 		$data['title'] = "Reception | Dashboard";
 		$data['author'] = "";
+	    $data['flash'] = $this->session->flashdata('msg');
 
 		$this->load->view('templates/header',$data);
-		$this->load->view('pages/recept-dashboard');
+		$this->load->view('pages/recept-dashboard',$posts);
 
 		$data['bootstrap_js'] = true;
 		$data['jquery_js'] = true;
@@ -362,5 +366,56 @@ class Recept extends CI_Controller
 
 		$this->load->view('templates/footer',$data);
 	}
+	public function check_in($id)
+	{
+	
+
+		$data['bootstrap_css'] = true;
+		$data['formlayout_css'] = true;
+		$data['theme_css'] = true;
+		$data['icons_css'] = true;
+		$data['material_css'] = true;
+		$data['wizard_css'] = true;
+		$data['title'] = "Reception | Customer Ckeck-In";
+		$data['author'] = "";
+		$data['flash'] = $this->session->flashdata('msg');
+
+		$this->load->view('templates/header',$data);
+
+		$data2['section'] = 'Customer Check In';
+		$data2['sidemenu'] = 'recept-sidemenu';
+		$this->load->view('pages/check-in',$data2);
+
+		$data['bootstrap_js'] = true;
+		$data['jquery_js'] = true;
+		$data['common_js'] = true;
+		$data['material_js'] = true;
+		$data['wizard_js'] = true;
+
+		$this->load->view('templates/footer',$data);
+	}
+	 public function queue($id)
+	 {
+		if(filter_input(INPUT_POST, 'submit')==='Check Appointment In')
+		
+			{
+
+				 if($this->recept_model->queue($id,$_POST))
+				 {
+					$this->session->set_flashdata('msg','Customer Checked In!');
+					redirect('recept/dashboard');
+				}
+				else
+				{
+					$this->session->set_flashdata('msg','Try, again!');
+					redirect("recept/check_in/{$row['apt_id']}");
+
+				}
+			}
+			
+		
+		
+		
+	 }
 
 }

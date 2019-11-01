@@ -25,14 +25,14 @@
 			</li>
 
 			<li class="nav-item <?php echo $selected1==='dashboard'?'active open':''; ?>">
-				<a href="<?php echo(site_url('tech/dashboard')); ?>" class="nav-link "> 
+				<a href="<?php echo(site_url('servAdd/dashboard')); ?>" class="nav-link "> 
 					<i class="material-icons">dashboard</i>
 					<span class="title">Dashboard</span>
 				</a>
 			</li>
 		
 
-		<!--	<li class="nav-item <?php echo $selected1==='vehicles'?'active open':''; ?>">
+			<li class="nav-item <?php echo $selected1==='vehicles'?'active open':''; ?>">
 				<a href="#" class="nav-link nav-toggle">
 					<i class="material-icons">dvr</i>
 					<span class="title">Vehicles</span>
@@ -54,13 +54,6 @@
 						</a>
 					</li>
 				</ul>
-				</a>
-			</li>
-			-->
-            <li class="nav-item <?php echo $selected1==='dashboard'?'active open':''; ?>">
-				<a href="<?php echo(site_url('tech/tech_profile')); ?>" class="nav-link "> 
-					<i class="material-icons">person</i>
-					<span class="title">Profile</span>
 				</a>
 			</li>
 

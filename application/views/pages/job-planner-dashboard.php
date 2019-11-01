@@ -8,7 +8,7 @@
 		<?php 
 		$data['selected1'] = 'Dashboard';
 		$data['selected2'] = '';
-		$this->load->view('templates/recept-sidemenu',$data); 
+		$this->load->view('templates/servAdd-sidemenu',$data); 
 	?>
 	<!-- start page content -->
 	<div class="page-content-wrapper">
@@ -35,8 +35,8 @@
 							<div class="info-box-content">
 								<span class="info-box-text">Today's Appts</span>
 								<span class="info-box-number"><?php echo $this->db->count_all('appointment'); ?></span>
-								<div class=" hide progress">
-									<div class="progress-bar" style="width: 45%"></div>
+								<div class=" progress">
+									<div class="progress-bar" style="width: 75%"></div>
 								</div>
 								<span class="hide progress-description">
 									45% Increase in 28 Days
@@ -219,7 +219,7 @@
 				<div class="col-md-12 col-sm-12">
 					<div class="card  card-topline-red">
 						<div class="card-head">
-							<header>All Appointments for Today</header>
+							<header>Waiting for Service Advisor List</header>
 							<div class="tools">
 								<a class="fa fa-repeat btn-color box-refresh" href="javascript:;"></a>
 								<a class="t-collapse btn-color fa fa-chevron-down" href="javascript:;"></a>
@@ -231,7 +231,7 @@
 								<div class="col-md-6 col-sm-6 col-xs-6">
 									<div class="btn-group">
 										<a href="<?php echo site_url('recept/add_appointment');?>" id="addRow" class="btn btn-info">
-										Add Walk-In<i class="fa fa-plus"></i>
+										<i class="fa fa-plus"></i>
 										</a>
 									</div>
 								</div>

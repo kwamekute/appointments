@@ -64,6 +64,27 @@ class Login extends CI_Controller
             $data['target'] = 'planner';
             $this->load->view('pages/login',$data);
         }
+        public function Serv_ad()
+        {
+            if (filter_input(INPUT_POST, 'submit')) {
+                if( $this->auth_model->verifyUser(
+                    $this->input->post('username'),
+                    $this->input->post('password')))
+                {
+                    $this->auth_model->updateSess(
+                        $this->input->post('username'),
+                        $this->input->post('password'));
+                    echo "1";
+                }
+                else
+                    echo "0";
+    
+                return;
+            }
+    
+                $data['target'] = 'servAd';
+                $this->load->view('pages/login',$data);
+            }
 
     public function reception()
     {

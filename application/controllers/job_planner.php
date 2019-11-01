@@ -5,12 +5,12 @@ defined('BASEPATH') OR exit('No direct script access allowed');
  * @author Eric Mensah
  * @date 9/22/2019
  */
-class Tech extends CI_Controller
+class Job_planner extends CI_Controller
 {
 	
 	public function index()
 	{
-		redirect('tech/dashboard');
+		redirect('job-planner/dashboard');
 	}
 	/**
 	 * FUNCTION : DASHBOARD
@@ -25,12 +25,12 @@ class Tech extends CI_Controller
 		$data['theme_css'] = true;
 		$data['icons_css'] = true;
 		$data['material_css'] = true;
-		$data['title'] = "Technician | Dashboard";
+		$data['title'] = "Job Planning | Dashboard";
 		$data['author'] = "";
 	    
 
 		$this->load->view('templates/header',$data);
-		$this->load->view('pages/tech-dashboard',$posts);
+		$this->load->view('pages/job-planner-dashboard',$posts);
 
 		$data['bootstrap_js'] = true;
 		$data['jquery_js'] = true;
@@ -109,43 +109,6 @@ class Tech extends CI_Controller
 		$data2['section'] = 'vehicles';
 
 		$this->load->view('pages/add-edit-vehicle',$data2);
-
-		$data['bootstrap_js'] = true;
-		$data['jquery_js'] = true;
-		$data['common_js'] = true;
-		$data['material_js'] = true;
-		$data['bootstrap_forms_js'] = true;
-		$data['select2_js'] = true;
-		$data['wizard_js'] = true;
-		$data['javascript'] = $this->load->view('scripts/appointment-staff',[],true);
-
-		$this->load->view('templates/footer',$data);
-	}
-
-	public function tech_profile()
-	{
-		if (filter_input(INPUT_POST, 'submit')==='vehicle') 
-		{
-			echo $this->vehicle_model->addVehicle();
-			return;
-		}
-
-		$data['bootstrap_css'] = true;
-		$data['formlayout_css'] = true;
-		$data['theme_css'] = true;
-		$data['icons_css'] = true;
-		$data['material_css'] = true;
-		$data['wizard_css'] = true;
-		$data['bootstrap_forms_css'] = true;
-		$data['select2_css'] = true;
-		$data['title'] = "Techician | Personal Profile";
-		$data['author'] = "";
-
-		$this->load->view('templates/header',$data);
-
-		$data2['section'] = 'vehicles';
-
-		$this->load->view('pages/tech_profile',$data2);
 
 		$data['bootstrap_js'] = true;
 		$data['jquery_js'] = true;

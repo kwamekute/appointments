@@ -29,6 +29,7 @@ class User_model extends CI_Model
 
         return trim($name);
     }
+    
 
     public function updatePersonalInfo() 
     {

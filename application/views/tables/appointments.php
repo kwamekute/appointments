@@ -13,7 +13,7 @@
 				<div class="row">
 					<div class="col-md-6 col-sm-6 col-xs-6">
 						<div class="btn-group">
-							<a href="<?php echo(site_url('recept/add-appointment')); ?>" id="addRow" class="btn btn-info">
+							<a href="<?php echo(site_url('appointment_staff/add-appointment')); ?>" id="addRow" class="btn btn-info">
 								Add New <i class="fa fa-plus"></i>
 							</a>
 						</div>

@@ -23,11 +23,17 @@ elseif($target === 'reception')
 	$caption = "Reception";
 	$redirect_to = site_url('recept');
 }
+elseif($target === 'servAd')
+{
+	$img_url = base_url('dist/img/planner.png');
+	$caption = "Service Advisory";
+	$redirect_to = site_url('servAdd');
+}
 elseif($target === 'planner')
 {
 	$img_url = base_url('dist/img/planner.png');
 	$caption = "Job Planning";
-	$redirect_to = site_url('job-planner');
+	$redirect_to = site_url('job_planner');
 }
 ?>
 
