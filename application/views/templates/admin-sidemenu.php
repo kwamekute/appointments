@@ -2,12 +2,7 @@
 	$user = $this->session->user_sess;
 	$fullname = empty($this->user_model->getFullName())?"Hi, there!":$this->user_model->getFullName();
 
-	if($this->session->user_sses['id']) 
-										{
-											echo 1;
-										}
-										 else
-								        {echo "no session";};
+	
 ?>
 <!-- start sidebar menu -->
 <div class="sidebar-container">
